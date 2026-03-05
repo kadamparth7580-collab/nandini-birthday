@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nandini Birthday Countdown</title>
+
+<style>
+
+body{
+background: linear-gradient(#ffd6e7,#ffeef5);
+font-family: Arial;
+text-align:center;
+overflow:hidden;
+}
+
+h1{
+margin-top:80px;
+font-size:40px;
+color:#ff4f81;
+}
+
+#countdown{
+font-size:40px;
+margin-top:20px;
+color:#ff4f81;
+}
+
+button{
+padding:12px 25px;
+border:none;
+background:#ff4f81;
+color:white;
+font-size:18px;
+border-radius:20px;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:#ff2e6e;
+}
+
+.heart{
+position:absolute;
+color:pink;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Countdown to Nandini's Birthday 🎀</h1>
+
+<div id="countdown"></div>
+
+<div id="birthdayContent" style="display:none">
+
+<h1>🎂 Happy Birthday Nandini 🎂</h1>
+
+<p style="width:60%;margin:auto;font-size:20px;color:#ff4f81">
+
+Dear Nandini 💗  
+<br><br>
+Happy Birthday to my bestest friend!  
+I’m really lucky to have a friend like you in my life.  
+You always make everything better with your smile, your kindness, and your amazing personality.  
+<br><br>
+I hope this year brings you lots of happiness, success, and beautiful memories.  
+You deserve the best things in life.  
+<br><br>
+Thank you for being such a wonderful friend.  
+Once again, Happy Birthday Nandini 🎂💖
+
+</p>
+
+<br>
+
+<button onclick="openPopup()">💌 One Last Message</button>
+<br><br>
+
+<button onclick="location.href='gift.html'">Open Your Gift 🎁</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let birthday = new Date("March 15, 2026 00:00:00").getTime();
+
+let x = setInterval(function(){
+
+let now = new Date().getTime();
+let distance = birthday - now;
+
+let days = Math.floor(distance / (1000*60*60*24));
+let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+let seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+
+if(distance < 0){
+
+clearInterval(x);
+
+document.getElementById("countdown").style.display="none";
+document.getElementById("birthdayContent").style.display="block";
+
+document.getElementById("music").play();
+
+confetti();
+
+}
+
+},1000);
+
+function openPopup(){
+
+alert("You are not just my best friend, you are someone very special in my life 💖");
+
+}
+
+function confetti(){
+
+for(let i=0;i<200;i++){
+
+let conf = document.createElement("div");
+
+conf.innerHTML="🎉";
+conf.style.position="absolute";
+conf.style.left=Math.random()*100+"vw";
+conf.style.top=Math.random()*100+"vh";
+conf.style.fontSize="25px";
+
+document.body.appendChild(conf);
+
+}
+
+}
+
+/* Floating hearts */
+
+for(let i=0;i<15;i++){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>

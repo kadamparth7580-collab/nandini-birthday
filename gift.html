@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gift for Nandini</title>
+
+<style>
+
+body{
+background: linear-gradient(#ffd6e7,#ffeef5);
+text-align:center;
+font-family:Arial;
+}
+
+h1{
+color:#ff4f81;
+margin-top:60px;
+}
+
+.slideshow{
+width:300px;
+height:400px;
+margin:auto;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.slideshow img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:none;
+}
+
+button{
+padding:12px 25px;
+background:#ff4f81;
+color:white;
+border:none;
+border-radius:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎁 A Small Gift For You Nandini 💖</h1>
+
+<p>Some beautiful memories with my bestest friend ✨</p>
+
+<div class="slideshow">
+
+<img class="slide" src="photo1.jpg">
+<img class="slide" src="photo2.jpg">
+<img class="slide" src="photo3.jpg">
+
+</div>
+
+<br><br>
+
+<a href="index.html">
+<button>Back</button>
+</a>
+
+<script>
+
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlide(){
+
+slides.forEach(slide => slide.style.display="none");
+
+slides[index].style.display="block";
+
+index++;
+
+if(index >= slides.length){
+index = 0;
+}
+
+}
+
+setInterval(showSlide,2000);
+
+showSlide();
+
+</script>
+
+</body>
+</html>
