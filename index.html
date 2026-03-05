@@ -32,11 +32,16 @@ color:white;
 font-size:18px;
 border-radius:20px;
 cursor:pointer;
-margin-top:20px;
+margin-top:15px;
 }
 
 button:hover{
 background:#ff2e6e;
+}
+
+button:disabled{
+background:gray;
+cursor:not-allowed;
 }
 
 .heart{
@@ -60,6 +65,16 @@ animation:float 6s linear infinite;
 
 <div id="countdown"></div>
 
+<br>
+
+<button onclick="playMusic()">🎵 Play Music</button>
+
+<br>
+
+<button id="giftButton" onclick="openGift()" disabled>
+🔒 Gift Locked
+</button>
+
 <div id="birthdayContent" style="display:none">
 
 <h1>🎂 Happy Birthday Nandini 🎂</h1>
@@ -71,10 +86,14 @@ Dear Nandini 💗
 Happy Birthday to my bestest friend!  
 I’m really lucky to have a friend like you in my life.  
 You always make everything better with your smile, your kindness, and your amazing personality.  
+
 <br><br>
+
 I hope this year brings you lots of happiness, success, and beautiful memories.  
 You deserve the best things in life.  
+
 <br><br>
+
 Thank you for being such a wonderful friend.  
 Once again, Happy Birthday Nandini 🎂💖
 
@@ -83,9 +102,6 @@ Once again, Happy Birthday Nandini 🎂💖
 <br>
 
 <button onclick="openPopup()">💌 One Last Message</button>
-<br><br>
-
-<button onclick="location.href='gift.html'">Open Your Gift 🎁</button>
 
 </div>
 
@@ -94,6 +110,18 @@ Once again, Happy Birthday Nandini 🎂💖
 </audio>
 
 <script>
+
+function playMusic(){
+document.getElementById("music").play();
+}
+
+function openGift(){
+window.location.href="gift.html";
+}
+
+function openPopup(){
+alert("You are not just my best friend, you are someone very special in my life 💖");
+}
 
 let birthday = new Date("March 15, 2026 00:00:00").getTime();
 
@@ -117,19 +145,16 @@ clearInterval(x);
 document.getElementById("countdown").style.display="none";
 document.getElementById("birthdayContent").style.display="block";
 
-document.getElementById("music").play();
+let gift = document.getElementById("giftButton");
+
+gift.innerHTML="🎁 Open Your Gift";
+gift.disabled=false;
 
 confetti();
 
 }
 
 },1000);
-
-function openPopup(){
-
-alert("You are not just my best friend, you are someone very special in my life 💖");
-
-}
 
 function confetti(){
 
